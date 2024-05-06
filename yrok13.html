@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>сайт</title>
+    <link rel="stylesheet" type="text/css" href="1234.css">
+    <title>Эксперимент 13. Секундомер</title>
+</head>
+<br>
+    <img src="mauchok11.png" height="500px" align=right>
+    <div class="cod"><p><h2>Код</h2></p></div>
+    <div class="mauchok2">
+    <p>
+        <br>
+            #define FIRST_SEGMENT_PIN 2</br>
+#define SEGMENT_COUNT 7</br>
+// префикс «0b» означает, что целое число за ним записано в</br>
+// в двоичном коде. Единицами мы обозначим номера сегментов</br>
+// индикатора, которые должны быть включены для отображения</br>
+// арабской цифры. Всего цифр 10, поэтому в массиве 10 чисел.</br>
+// Нам достаточно всего байта (англ. byte, 8 бит) для хранения</br>
+// комбинации сегментов для каждой из цифр.</br>
+byte numberSegments[10] = {</br>
+ 0b00111111, 0b00001010, 0b01011101, 0b01011110, 0b01101010,</br>
+ 0b01110110, 0b01110111, 0b00011010, 0b01111111, 0b01111110,</br>
+};</br>
+void setup()</br>
+{</br>
+ for (int i = 0; i < SEGMENT_COUNT; ++i)</br>
+ pinMode(i + FIRST_SEGMENT_PIN, OUTPUT);</br>
+}</br>
+void loop()</br>
+{</br>
+ // определяем число, которое собираемся отображать. Пусть им</br>
+ // будет номер текущей секунды, зацикленный на десятке</br>
+ int number = (millis() / 1000) % 10;</br>
+ // получаем код, в котором зашифрована арабская цифра</br>
+ int mask = numberSegments[number];</br>
+ // для каждого из 7 сегментов индикатора...</br>
+ for (int i = 0; i < SEGMENT_COUNT; ++i) {</br>
+ // ...определяем: должен ли он быть включён. Для этого</br>
+ // считываем бит (англ. read bit), соответствующий текущему</br>
+ // сегменту «i». Истина — он установлен (1), ложь — нет (0)</br>
+ boolean enableSegment = bitRead(mask, i);</br>
+ // включаем/выключаем сегмент на основе полученного значения</br>
+ digitalWrite(i + FIRST_SEGMENT_PIN, enableSegment);</br>
+ }</br>
+}</br>
+</p>
+        
+
+
+
+</div>
+
+    <div class="nazad">
+        <h1><a href="yroki.html ">Назад</a></h1>
+    </div>
+</body>
+</html>

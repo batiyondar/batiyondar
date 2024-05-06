@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>сайт</title>
+    <link rel="stylesheet" type="text/css" href="1234.css">
+    <title>Эксперимент 20. Перетягивание каната</title>
+</head>
+<body>
+    <img src="mauchok17.png" height="500px" align=right>
+    <div class="cod"><p><h2>Код</h2></p></div>
+    <div class="mauchok2">
+        <br>
+            #define BUZZER_PIN 0</br>
+#define FIRST_BAR_PIN 4</br>
+#define BAR_COUNT 10</br>
+#define MAX_SCORE 20</br>
+// глобальные переменные, используемые в прерываниях (см. далее)</br>
+// должны быть отмечены как нестабильные (англ. volatile)</br>
+volatile int score = 0;</br>
+void setup()</br>
+{</br>
+for (int i = 0; i < BAR_COUNT; ++i)</br>
+ pinMode(i + FIRST_BAR_PIN, OUTPUT);</br>
+ pinMode(BUZZER_PIN, OUTPUT);</br>
+// Прерывание (англ. interrupt) приостанавливает основную</br>
+// программу, выполняет заданную функцию, а затем возобновляет</br>
+// основную программу. Нам нужно прерывание на нажатие кнопки,</br>
+// т.е. при смене сигнала с высокого на низкий, т.е. на</br>
+// нисходящем (англ. falling) фронте</br>
+ attachInterrupt(INT1, pushP1, FALLING); // INT1 — это 3-й пин</br>
+ attachInterrupt(INT0, pushP2, FALLING); // INT0 — это 2-й пин</br>
+}</br>
+void pushP1() { ++score; } // функция-прерывание 1-го игрока</br>
+void pushP2() { --score; } // функция-прерывание 2-го игрока</br>
+void loop()</br>
+{</br>
+ tone(BUZZER_PIN, 2000, 1000); // даём сигнал к старту.</br>
+// пока никто из игроков не выиграл, обновляем «канат»</br>
+while (abs(score) < MAX_SCORE) {</br>
+ int bound = map(score, -MAX_SCORE, MAX_SCORE, 0, BAR_COUNT);</br>
+ int left = min(bound, BAR_COUNT / 2 - 1);</br>
+ int right = max(bound, BAR_COUNT / 2);</br>
+ for (int i = 0; i < BAR_COUNT; ++i)</br>
+ digitalWrite(i + FIRST_BAR_PIN, i >= left && i <= right);</br>
+}</br>
+ tone(BUZZER_PIN, 4000, 1000); // даём сигнал победы</br>
+while (true) {} // «подвешиваем» плату до перезагрузки</br>
+}</br>
+
+        </p>
+
+
+
+</div>
+
+    <div class="nazad">
+        <h1><a href="yroki.html ">Назад</a></h1>
+    </div>
+</body>
+</html>

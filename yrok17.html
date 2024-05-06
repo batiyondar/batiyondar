@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>сайт</title>
+    <link rel="stylesheet" type="text/css" href="1234.css">
+    <title>Эксперимент 17. Пантограф</title>
+</head>
+<body>
+    <img src="mauchok15.png" height="500px" align=right>
+    <div class="cod"><p><h2>Код</h2></p></div>
+    <div class="mauchok2">
+        <br>
+            // управлять сервоприводами (англ. servo motor) самостоятельно</br>
+// не так то просто, но в стандартной библиотеке уже всё</br>
+// заготовлено, что делает задачу тривиальной</br>
+#include <Servo.h></br>
+#define POT_MAX_ANGLE 270.0 // макс. угол поворота потенциометра</br>
+// объявляем объект типа Servo с именем myServo. Ранее мы</br>
+// использовали int, boolean, float, а теперь точно также</br>
+// используем тип Servo, предоставляемый библиотекой. В случае</br>
+// Serial мы использовали объект сразу же: он уже был создан</br>
+// для нас, но в случае с Servo, мы должны сделать это явно.</br>
+// Ведь в нашем проекте могут быть одновременно несколько</br>
+// приводов, и нам понадобится различать их по именам</br>
+Servo myServo;</br>
+void setup()</br>
+{</br>
+// прикрепляем (англ. attach) нашу серву к 9-му пину. Явный</br>
+// вызов pinMode не нужен: функция attach сделает всё за нас</br>
+ myServo.attach(9);</br>
+}</br>
+void loop()</br>
+{</br>
+int val = analogRead(A0);</br>
+// на основе сигнала понимаем реальный угол поворота движка.</br>
+// Используем вещественные числа в расчётах, но полученный</br>
+// результат округляем обратно до целого числа</br>
+int angle = int(val / 1024.0 * POT_MAX_ANGLE);</br>
+// обычная серва не сможет повторить угол потенциометра на</br>
+// всём диапазоне углов. Она умеет вставать в углы от 0° до</br>
+// 180°. Ограничиваем угол соответствующе</br>
+ angle = constrain(angle, 0, 180);</br>
+// и, наконец, подаём серве команду встать в указанный угол</br>
+ myServo.write(angle);</br>
+}</br>
+</p>
+</div>
+
+    <div class="nazad">
+        <h1><a href="yroki.html ">Назад</a></h1>
+    </div>
+</body>
+</html>

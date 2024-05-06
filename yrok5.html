@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>сайт</title>
+    <link rel="stylesheet" type="text/css" href="1234.css">
+    <title>Светильник с управляемой
+        яркостью</title>
+</head>
+<body>
+    <img src="mauchok3.png" height="500px" align=right>
+    <div class="cod"><p><h2>Код</h2></p></div>
+    <div class="mauchok2">
+    <p>
+            #define LED_PIN 13<br/>
+#define LDR_PIN A0<br/>
+#define POT_PIN A1<br/>
+void setup()<br/>
+{<br/>
+ pinMode(LED_PIN, OUTPUT);<br/>
+}<br/>
+void loop()<br/>
+{<br/>
+ // считываем уровень освещённости. Кстати, объявлять<br/>
+ // переменную и присваивать ей значение можно разом<br/>
+ int lightness = analogRead(LDR_PIN);<br/>
+ // считываем значение с потенциометра, которым мы регулируем<br/>
+ // пороговое значение между условными темнотой и светом<br/>
+ int threshold = analogRead(POT_PIN);<br/>
+ // объявляем логическую переменную и назначаем ей значение<br/>
+ // «темно ли сейчас». Логические переменные, в отличие от<br/>
+ // целочисленных, могут содержать лишь одно из двух значений:<br/>
+ // истину (англ. true) или ложь (англ. false). Такие значения<br/>
+ // ещё называют булевыми (англ. boolean).<br/>
+ boolean tooDark = (lightness < threshold);<br/>
+ // используем ветвление программы: процессор исполнит один из<br/>
+ // двух блоков кода в зависимости от исполнения условия.<br/>
+ // Если (англ. «if») слишком темно...<br/>
+ if (tooDark) {<br/>
+ // ...включаем освещение<br/>
+ digitalWrite(LED_PIN, HIGH);<br/>
+ } else {<br/>
+ // ...иначе свет не нужен — выключаем его<br/>
+ digitalWrite(LED_PIN, LOW);<br/>
+ }<br/>
+}<br/>
+    </p>
+
+
+
+</div>
+
+    <div class="nazad">
+        <h1><a href="yroki.html ">Назад</a></h1>
+    </div>
+</body>
+</html>

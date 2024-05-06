@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>сайт</title>
+    <link rel="stylesheet" type="text/css" href="1234.css">
+    <title>Эксперимент 8. Мерзкое пианино</title>
+</head>
+<body>
+    <img src="mauchok6.png" height="500px" align=right>
+    <div class="cod"><p><h2>Код</h2></p></div>
+    <div class="mauchok2">
+<br>
+    #define BUZZER_PIN 13 // пин с пищалкой (англ. «buzzer»)</br>
+#define FIRST_KEY_PIN 7 // первый пин с клавишей (англ. «key»)</br>
+#define KEY_COUNT 3 // общее количество клавиш</br>
+void setup()</br>
+{</br>
+ pinMode(BUZZER_PIN, OUTPUT);</br>
+}</br>
+void loop()</br>
+{</br>
+ // в цикле бежим по всем номерам кнопок от 0-го по 2-й</br>
+ for (int i = 0; i < KEY_COUNT; ++i) {</br>
+ // на основе номера кнопки вычисляем номер её пина</br>
+ int keyPin = i + FIRST_KEY_PIN;</br>
+ // считываем значение с кнопки. Возможны всего 2 варианта:</br>
+ // * высокий сигнал, 5 вольт, истина — кнопка отпущена</br>
+ // * низкий сигнал, земля, ложь — кнопка зажата</br>
+ boolean keyUp = digitalRead(keyPin);</br>
+ // проверяем условие «если не кнопка отпущена». Знак «!»</br>
+ // перед булевой переменной означает отрицание, т.е. «не».</br>
+ if (!keyUp) {</br>
+ // рассчитываем высоту ноты в герцах в зависимости от</br>
+ // клавиши, которую рассматриваем на данном этапе цикла.</br>
+ // Мы получим значение 3500, 4000 или 4500</br>
+ int frequency = 3500 + i * 500;</br>
+ // Заставляем пищалку пищать с нужной частотой в течение</br>
+ // 20 миллисекунд. Если клавиша останется зажатой, пищалка</br>
+ // вновь зазвучит при следующем проходе loop, а мы услышим</br>
+ // непрерывный звук</br>
+ tone(BUZZER_PIN, frequency, 20);</br>
+ }</br>
+ }</br>
+}</br>
+</p>
+</div>
+
+    <div class="nazad">
+        <h1><a href="yroki.html ">Назад</a></h1>
+    </div>
+</body>
+</html>

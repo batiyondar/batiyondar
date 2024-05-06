@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>сайт</title>
+    <link rel="stylesheet" type="text/css" href="1234.css">
+    <title>Эксперимент 7. Бегущий огонёк</title>
+</head>
+<body>
+    <img src="mauchok5.png" height="500px" align=right>
+    <div class="cod"><p><h2>Код</h2></p></div>
+    <div class="mauchok2">
+<p>// светодиодная шкала подключена к группе пинов расположенных</br>
+    // подряд. Даём понятные имена первому и последнему пинам</br>
+    #define FIRST_LED_PIN 2</br>
+    #define LAST_LED_PIN 11</br>
+    void setup()</br>
+    {</br>
+     // в шкале 10 светодиодов. Мы бы могли написать pinMode 10</br>
+     // раз: для каждого из пинов, но это бы раздуло код и</br>
+     // сделало его изменение более проблематичным.</br>
+     // Поэтому лучше воспользоваться циклом. Мы выполняем</br>
+     // pinMode для (англ. for) каждого пина (переменная pin)</br>
+     // от первого (= FIRST_LED_PIN) до последнего включительно</br>
+     // (<= LAST_LED_PIN), всякий раз продвигаясь к следующему</br>
+     // (++pin увеличивает значение pin на единицу)</br>
+     // Так все пины от 2-го по 11-й друг за другом станут выходами</br>
+     for (int pin = FIRST_LED_PIN; pin <= LAST_LED_PIN; ++pin)</br>
+     pinMode(pin, OUTPUT);</br>
+    }</br>
+    void loop()</br>
+    {</br>
+     // получаем время в миллисекундах, прошедшее с момента</br>
+     // включения микроконтроллера</br>
+     unsigned int ms = millis();</br>
+     // нехитрой арифметикой вычисляем, какой светодиод</br>
+     // должен гореть именно сейчас. Смена будет происходить</br>
+     // каждые 120 миллисекунд. Y % X — это остаток от</br>
+     // деления Y на X; плюс, минус, скобки — как в алгебре.</br>
+     int pin = FIRST_LED_PIN + (ms / 120) % 10;</br>
+     // включаем нужный светодиод на 10 миллисекунд, затем —</br>
+     // выключаем. На следующем проходе цикла он снова включится,</br>
+     // если гореть его черёд, и мы вообще не заметим отключения</br>
+     digitalWrite(pin, HIGH);</br>
+     delay(10);</br>
+     digitalWrite(pin, LOW);</br>
+    }</br>
+</p>
+
+
+</div>
+
+    <div class="nazad">
+        <h1><a href="yroki.html ">Назад</a></h1>
+    </div>
+</body>
+</html>

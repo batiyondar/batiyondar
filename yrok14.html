@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>сайт</title>
+    <link rel="stylesheet" type="text/css" href="1234.css">
+    <title>Эксперимент 14. Счётчик нажатий</title>
+</head>
+<body>
+    <img src="mauchok12.png" height="500px" align=right>
+    <div class="cod"><p><h2>Код</h2></p></div>
+    <div class="mauchok2">
+        <br>
+            #define DATA_PIN 13 // пин данных (англ. data)</br>
+            #define LATCH_PIN 12 // пин такта (англ. clock)</br>
+            #define CLOCK_PIN 11 // пин строба (англ. latch)</br>
+            #define BUTTON_PIN 10</br>
+            int clicks = 0;</br>
+            boolean buttonWasUp = true;</br>
+            byte segments[10] = {</br>
+             0b01111101, 0b00100100, 0b01111010, 0b01110110, 0b00100111,</br>
+             0b01010111, 0b01011111, 0b01100100, 0b01111111, 0b01110111</br>
+            };</br>
+            void setup()</br>
+            {</br>
+             pinMode(DATA_PIN, OUTPUT);</br>
+             pinMode(CLOCK_PIN, OUTPUT);</br>
+             pinMode(LATCH_PIN, OUTPUT);</br>
+             pinMode(BUTTON_PIN, INPUT_PULLUP);</br>
+            }</br>
+            void loop()</br>
+            {</br>
+             // считаем клики кнопки, как уже делали это раньше</br>
+             if (buttonWasUp && !digitalRead(BUTTON_PIN)) {</br>
+             delay(10);</br>
+             if (!digitalRead(BUTTON_PIN))</br>
+             clicks = (clicks + 1) % 10;</br>
+             }</br>
+             buttonWasUp = digitalRead(BUTTON_PIN);</br>
+             // для записи в 74HC595 нужно притянуть пин строба к земле</br>
+             digitalWrite(LATCH_PIN, LOW);</br>
+             // задвигаем (англ. shift out) байт-маску бит за битом,</br>
+             // начиная с младшего (англ. Least Significant Bit first)</br>
+             shiftOut(DATA_PIN, CLOCK_PIN, LSBFIRST, segments[clicks]);</br>
+             // чтобы переданный байт отразился на выходах Qx, нужно</br>
+             // подать на пин строба высокий сигнал</br>
+             digitalWrite(LATCH_PIN, HIGH);</br>
+            }</br>
+        </p>
+
+
+
+</div>
+
+    <div class="nazad">
+        <h1><a href="yroki.html ">Назад</a></h1>
+    </div>
+</body>
+</html>

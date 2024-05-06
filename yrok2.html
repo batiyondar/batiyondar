@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>сайт</title>
+    <link rel="stylesheet" type="text/css" href="1234.css">
+    <title>Document</title>
+</head>
+<body>
+    <img src="Маячок с нарастающей яркостью.png" height="400px" align=right>
+<div class="cod"><p><h2>Код</h2></p></div>
+    <div class="mauchok2">
+            <p>// даём разумное имя для пина №9 со светодиодом<br/>
+            // (англ. Light Emitting Diode или просто «LED»)<br/>
+            // Так нам не нужно постоянно вспоминать куда он подключён<br/>
+            #define LED_PIN 9<br/>
+            void setup()<br/>
+            {<br/>
+            // настраиваем пин со светодиодом в режим выхода,<br/>
+            // как и раньше<br/>
+            pinMode(LED_PIN, OUTPUT);<br/>
+            }<br/>
+            void loop()<br/>
+            {<br/>
+            // выдаём неполное напряжение на светодиод<br/>
+            // (он же ШИМ-сигнал, он же PWM-сигнал).<br/>
+            // Микроконтроллер переводит число от 0 до 255 к напряжению<br/>
+            // от 0 до 5 В. Например, 85 — это 1/3 от 255,<br/>
+            // т.е. 1/3 от 5 В, т.е. 1,66 В.<br/>
+            analogWrite(LED_PIN, 85);<br/>
+            // держим такую яркость 250 миллисекунд<br/>
+            delay(250);<br/>
+            // выдаём 170, т.е. 2/3 от 255, или иными словами — 3,33 В.<br/>
+            // Больше напряжение — выше яркость!<br/>
+            analogWrite(LED_PIN, 170);<br/>
+            delay(250);<br/>
+            // все 5 В — полный накал!<br/>
+            analogWrite(LED_PIN, 255);<br/>
+            // ждём ещё немного перед тем, как начать всё заново<br/>
+            delay(250);<br/>
+            }</p>
+    </div>
+    <div class="nazad">
+        <h1><a href="yroki.html ">Назад</a></h1>
+    </div>
+</body>
+</html>

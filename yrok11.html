@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>сайт</title>
+    <link rel="stylesheet" type="text/css" href="1234.css">
+    <title>Эксперимент 11. Светильник с кнопочным управлением</title>
+</head>
+<body>
+    <img src="mauchok8.png" height="500px" align=right>
+    <div class="cod"><p><h2>Код</h2></p></div>
+    <div class="mauchok2">
+        <p>#define PLUS_BUTTON_PIN 2</br>
+            #define MINUS_BUTTON_PIN 3</br>
+            #define LED_PIN 9</br>
+            int brightness = 100;</br>
+            boolean plusUp = true;</br>
+            boolean minusUp = true;</br>
+            void setup()</br>
+            {</br>
+             pinMode(LED_PIN, OUTPUT);</br>
+             pinMode(PLUS_BUTTON_PIN, INPUT_PULLUP);</br>
+             pinMode(MINUS_BUTTON_PIN, INPUT_PULLUP);</br>
+            }</br>
+            void loop()</br>
+            {</br>
+             analogWrite(LED_PIN, brightness);</br>
+             // реагируем на нажатия с помощью функции, написанной нами</br>
+             plusUp = handleClick(PLUS_BUTTON_PIN, plusUp, +35);</br>
+             minusUp = handleClick(MINUS_BUTTON_PIN, minusUp, -35);</br>
+            }</br>
+            // Собственная функция с 3 параметрами: номером пина с кнопкой</br>
+            // (buttonPin), состоянием до проверки (wasUp) и градацией</br>
+            // яркости при клике на кнопку (delta). Функция возвращает</br>
+            // (англ. return) обратно новое, текущее состояние кнопки</br>
+            boolean handleClick(int buttonPin, boolean wasUp, int delta)</br>
+            {</br>
+             boolean isUp = digitalRead(buttonPin);</br>
+             if (wasUp && !isUp) {</br>
+             delay(10);</br>
+             isUp = digitalRead(buttonPin);</br>
+             // если был клик, меняем яркость в пределах от 0 до 255</br>
+             if (!isUp)</br>
+             brightness = constrain(brightness + delta, 0, 255);</br>
+             }</br>
+             return isUp; // возвращаем значение обратно, в вызывающий код</br>
+            }</br>
+        </p>
+
+
+
+</div>
+
+    <div class="nazad">
+        <h1><a href="yroki.html ">Назад</a></h1>
+    </div>
+</body>
+</html>

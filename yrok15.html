@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>сайт</title>
+    <link rel="stylesheet" type="text/css" href="1234.css">
+    <title>Эксперимент 15. Комнатный термометр</title>
+</head>
+<body>
+    <img src="mauchok13.png" height="500px" align=right>
+    <div class="cod"><p><h2>Код</h2></p></div>
+    <div class="mauchok2">
+        <p>
+            // Огромное количество готового кода уже написано другими людьми</br>
+// и хранится в виде отдельных файлов, которые называются</br>
+// библиотеками. Для использования кода из библиотеки, её нужно</br>
+// подключить (англ. include). Библиотека «math» даёт разные</br>
+// математические функции, в том числе функцию логарифма</br>
+// (англ. log), которая нам понадобится далее</br>
+#include <math.h></br>
+#define FIRST_LED_PIN 2</br>
+#define LED_COUNT 10</br>
+// Параметр конкретного типа термистора (из datasheet):</br>
+#define TERMIST_B 4300</br>
+#define VIN 5.0</br>
+void setup()</br>
+{</br>
+for (int i = 0; i < LED_COUNT; ++i)</br>
+ pinMode(i + FIRST_LED_PIN, OUTPUT);</br>
+}</br>
+void loop()</br>
+{</br>
+// вычисляем температуру в °С с помощью магической формулы.</br>
+// Используем при этом не целые числа, а вещественные. Их ещё</br>
+// называют числами с плавающей (англ. float) точкой. В</br>
+// выражениях с вещественными числами обязательно нужно явно</br>
+// указывать дробную часть у всех констант. Иначе дробная</br>
+// часть результата будет отброшена</br>
+ float voltage = analogRead(A0) * VIN / 1023.0;</br>
+ float r1 = voltage / (VIN - voltage);</br>
+ float temperature = 1./( 1./(TERMIST_B)*log(r1)+1./(25. + 273.) ) - 273;</br>
+for (int i = 0; i < LED_COUNT; ++i) {</br>
+ // при 21°С должен гореть один сегмент, при 22°С — два и</br>
+ // т.д. Определяем должен ли гореть i-й нехитрым способом</br>
+ boolean enableSegment = (temperature >= 21+i);</br>
+ digitalWrite(i + FIRST_LED_PIN, enableSegment);</br>
+}</br>
+}</br>
+
+        </p>
+
+
+
+</div>
+
+    <div class="nazad">
+        <h1><a href="yroki.html ">Назад</a></h1>
+    </div>
+</body>
+</html>

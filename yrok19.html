@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>сайт</title>
+    <link rel="stylesheet" type="text/css" href="1234.css">
+    <title>Эксперимент 19. Светильник, управляемый по USB</title>
+</head>
+<body>
+    <img src="mauchok16.png" height="500px" align=right>
+    <div class="cod"><p><h2>Код</h2></p></div>
+    <div class="mauchok2">
+        <p>
+            #define LED_PIN 9</br>
+// для работы с текстом существуют объекты-строки (англ. string)</br>
+String message;</br>
+void setup()</br>
+{</br>
+ pinMode(LED_PIN, OUTPUT);</br>
+ Serial.begin(9600);</br>
+}</br>
+void loop()</br>
+{</br>
+// передаваемые с компьютера данные поставляются байт за</br>
+// байтом, в виде отдельных символов (англ. character). Нам</br>
+// нужно последовательно их обрабатывать пока (англ. while)</br>
+// в порту доступны (англ. available) новые данные</br>
+while (Serial.available()) {</br>
+ // считываем (англ. read) пришедший символ в переменную</br>
+ char incomingChar = Serial.read();</br>
+ // не стоит путать целые числа и символы. Они соотносятся</br>
+ // друг с другом по таблице, называемой кодировкой. Например</br>
+ // '0' — это 48, '9' — 57, 'A' — 65, 'B' — 66 и т.п. Символы</br>
+ // в программе записываются в одинарных кавычках</br>
+ if (incomingChar >= '0' && incomingChar <= '9') {</br>
+ // если пришёл символ-цифра, добавляем его к сообщению</br>
+ message += incomingChar;</br>
+ } else if (incomingChar == '\n') {</br>
+ // если пришёл символ новой строки, т.е. enter, переводим</br>
+ // накопленное сообщение в целое число (англ. to integer).</br>
+ // Так последовательность символов '1', '2', '3' станет</br>
+ // числом 123. Результат выводим на светодиод</br>
+ analogWrite(LED_PIN, message.toInt());</br>
+ // обнуляем накопленное сообщение, чтобы начать всё заново</br>
+ message = "";</br>
+ }</br>
+}</br>
+// посылайте сообщения-числа с компьютера через Serial Monitor</br>
+}</br>
+
+        </p>
+
+
+
+</div>
+
+    <div class="nazad">
+        <h1><a href="yroki.html ">Назад</a></h1>
+    </div>
+</body>
+</html>

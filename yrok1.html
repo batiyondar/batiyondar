@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>сайт</title>
+    <link rel="stylesheet" type="text/css" href="1234.css">
+    <title>Document</title>
+</head>
+<body>
+    <img src="mauchok.jpg" height="500px" align=right>
+    <div class="cod"><p><h2>Код</h2></p></div>
+    <div class="yrok1">
+        <p>
+            void setup()<br/>
+            {<br/>
+            // настраиваем пин №13 в режим выхода,<br/>
+            // т.е. в режим источника напряжения<br/>
+            pinMode(13, OUTPUT);<br/>
+            }<br/>
+            void loop()<br/>
+            {<br/>
+            // подаём на пин 13 «высокий сигнал» (англ. «high»), т.е.<br/>
+            // выдаём 5 вольт. Через светодиод побежит ток.<br/>
+            // Это заставит его светиться<br/>
+            digitalWrite(13, HIGH);<br/>
+            // задерживаем (англ. «delay») микроконтроллер в этом<br/>
+            // состоянии на 100 миллисекунд<br/>
+            delay(100);<br/>
+            // подаём на пин 13 «низкий сигнал» (англ. «low»), т.е.<br/>
+            // выдаём 0 вольт или, точнее, приравниваем пин 13 к земле.<br/>
+            // В результате светодиод погаснет<br/>
+            digitalWrite(13, LOW);<br/>
+            // замираем в этом состоянии на 900 миллисекунд<br/>
+            delay(900);<br/>
+            // поcле «размораживания» loop сразу же начнёт исполняться<br/>
+            // внoвь, и со стороны это будет выглядеть так, будто<br/>
+            // светодиод мигает раз в 100 мс + 900 мс = 1000 мс = 1 сек<br/>
+            }<br/>
+        </p>       
+                
+    </div>
+    <div class="nazad">
+        <h1><a href="yroki.html ">Назад</a></h1>
+    </div>
+</body>
+</html>

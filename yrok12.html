@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>сайт</title>
+    <link rel="stylesheet" type="text/css" href="1234.css">
+    <title>Эксперимент 12. Кнопочные ковбои</title>
+</head>
+<body>
+    <img src="mauchok10.png" height="500px" align=right>
+    <div class="cod"><p><h2>Код</h2></p></div>
+    <div class="mauchok2">
+<p>
+    #define PLAYER_COUNT 2 // количество игроков-ковбоев</br>
+// вместо перечисления всех пинов по-одному, мы объявляем пару</br>
+// списков: один с номерами пинов с кнопками, другой — со</br>
+// светодиодами. Списки также называют массивами (англ. array)</br>
+int buttonPins[PLAYER_COUNT] = {3, 13};</br>
+int ledPins[PLAYER_COUNT] = {9, 11};</br>
+void setup()</br>
+{</br>
+ pinMode(BUZZER_PIN, OUTPUT);</br>
+ for (int player = 0; player < PLAYER_COUNT; ++player) {</br>
+ // при помощи квадратных скобок получают значение в массиве</br>
+ // под указанным в них номером. Нумерация начинается с нуля</br>
+ pinMode(ledPins[player], OUTPUT);</br>
+ pinMode(buttonPins[player], INPUT_PULLUP);</br>
+ }</br>
+}</br>
+void loop()</br>
+{</br>
+ // даём сигнал «пли!», выждав случайное время от 2 до 7 сек</br>
+ delay(random(2000, 7000));</br>
+ tone(BUZZER_PIN, 3000, 250); // 3 килогерца, 250 миллисекунд</br>
+ for (int player = 0; ; player = (player+1) % PLAYER_COUNT) {</br>
+ // если игрок номер «player» нажал кнопку...</br>
+ if (!digitalRead(buttonPins[player])) {</br>
+ // ...включаем его светодиод и сигнал победы на 1 сек</br>
+ digitalWrite(ledPins[player], HIGH);</br>
+ tone(BUZZER_PIN, 4000, 1000);</br>
+ delay(1000);</br>
+ digitalWrite(ledPins[player], LOW);</br>
+ break; // Есть победитель! Выходим (англ. break) из цикла</br>
+ }</br>
+ }</br>
+}</br>
+</p>
+
+
+</div>
+
+    <div class="nazad">
+        <h1><a href="yroki.html ">Назад</a></h1>
+    </div>
+</body>
+</html>

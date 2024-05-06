@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>сайт</title>
+    <link rel="stylesheet" type="text/css" href="1234.css">
+    <title>Эксперимент 10. Кнопочный переключатель</title>
+</head>
+<body>
+    <img src="mauchok8.png" height="500px" align=right>
+    <div class="cod"><p><h2>Код</h2></p></div>
+    <div class="mauchok2">
+        <p>#define BUTTON_PIN 3</br>
+            #define LED_PIN 13</br>
+            boolean buttonWasUp = true; // была ли кнопка отпущена?</br>
+            boolean ledEnabled = false; // включен ли свет?</br>
+            void setup()</br>
+            {</br>
+             pinMode(LED_PIN, OUTPUT);</br>
+             pinMode(BUTTON_PIN, INPUT_PULLUP);</br>
+            }</br>
+            void loop()</br>
+            {</br>
+             // определить момент «клика» несколько сложнее, чем факт того,</br>
+             // что кнопка сейчас просто нажата. Для определения клика мы</br>
+             // сначала понимаем, отпущена ли кнопка прямо сейчас...</br>
+             boolean buttonIsUp = digitalRead(BUTTON_PIN);</br>
+             // ...если «кнопка была отпущена и (&&) не отпущена сейчас»...</br>
+             if (buttonWasUp && !buttonIsUp) {</br>
+             // ...может это «клик», а может и ложный сигнал (дребезг),</br>
+             // возникающий в момент замыкания/размыкания пластин кнопки,</br>
+             // поэтому даём кнопке полностью «успокоиться»...</br>
+             delay(10);</br>
+             // ...и считываем сигнал снова</br>
+             buttonIsUp = digitalRead(BUTTON_PIN);</br>
+             if (!buttonIsUp) { // если она всё ещё нажата...</br>
+             // ...это клик! Переворачиваем сигнал светодиода</br>
+             ledEnabled = !ledEnabled;</br>
+             digitalWrite(LED_PIN, ledEnabled);</br>
+             }</br>
+             }</br>
+             // запоминаем последнее состояние кнопки для новой итерации</br>
+             buttonWasUp = buttonIsUp;</br>
+            }</br>
+            </p>
+
+
+
+</div>
+
+    <div class="nazad">
+        <h1><a href="yroki.html ">Назад</a></h1>
+    </div>
+</body>
+</html>

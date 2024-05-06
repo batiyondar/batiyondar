@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>сайт</title>
+    <link rel="stylesheet" type="text/css" href="1234.css">
+    <title>Эксперимент 6. Пульсар</title>
+</head>
+<body>
+    <img src="mauchok4.png" height="500px" align=right>
+    <div class="cod"><p><h2>Код</h2></p></div>
+    <div class="mauchok2">
+        <p>
+            #define CONTROL_PIN 9<br/>
+// переменные верхнего уровня, т.е. объявленные вне функций,<br/>
+// называют глобальными. Их значения сохраняются всё время,<br/>
+// пока работает микроконтроллер<br/>
+int brightness = 0;<br/>
+void setup()<br/>
+{<br/>
+ pinMode(CONTROL_PIN, OUTPUT);<br/>
+}<br/>
+void loop()<br/>
+{<br/>
+ // увеличиваем значение яркости на единицу, чтобы нарастить<br/>
+ // яркость. Однако яркость не должна быть более 255, поэтому<br/>
+ // используем операцию остатка от деления, чтобы при<br/>
+ // достижении значения 255, следующим значением снова стал 0<br/>
+ // Y % X — это остаток от деления Y на X;<br/>
+ // плюс, минус, делить, умножить, скобки — как в алгебре.<br/>
+ brightness = (brightness + 1) % 256;<br/>
+ // подаём вычисленный ШИМ-сигнал яркости на пин с базой<br/>
+ // управляющего транзистора<br/>
+ analogWrite(CONTROL_PIN, brightness);<br/>
+ // ждём 10 мс перед следующим наращиванием яркости. Таким<br/>
+ // образом, полный накал будет происходить в течение<br/>
+ // 256×10 = 2560 мс<br/>
+ delay(10);<br/>
+}<br/>
+</p>
+</div>
+
+    <div class="nazad">
+        <h1><a href="yroki.html ">Назад</a></h1>
+    </div>
+</body>
+</html>
